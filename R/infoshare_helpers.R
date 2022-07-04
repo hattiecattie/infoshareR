@@ -94,12 +94,12 @@ remove_infoshare_footnotes <- function(df) {
 #'
 wrangle_infoshare <- function(df,
                               dimension_names,
-                              measure_names,
-                              old_measure_names,
+                              measure_names = NA,
+                              old_measure_names = NA,
                               coerce_to_numeric = TRUE,
                               handle_dates = FALSE,
                               long = TRUE,
-                              measures_in_row) {
+                              measures_in_row = NA) {
   df <- remove_infoshare_footnotes(df)
 
   # deals with inconsistencies in file reading
@@ -113,22 +113,22 @@ wrangle_infoshare <- function(df,
 
 
   # reorders to put measures after dimensions (indexes from first row with actual values)
-  if (has_measures & !missing(measures_in_row)) {
+  if (has_measures & !is.na(measures_in_row)) {
     df <-
       df %>% slice((1:(n_dim + 1))[-measures_in_row], measures_in_row, (n_dim+2):nrow(df))
 
   }
 
   # extracts existing measure names if present, otherwise uses Value as a generic name
-  if (has_measures & missing(old_measure_names)) {
+  if (has_measures & is.na(old_measure_names)) {
     old_measure_names <- df %>% slice(n_dim + 1) %>% unlist() %>% unique()
-    old_measure_names <- old_measure_names[old_measure_names %in% c("", " ", NA)]
-  } else if (missing(old_measure_names)) {
+    old_measure_names <- old_measure_names[!(old_measure_names %in% c("", " ", NA))]
+  } else if (is.na(old_measure_names)) {
     old_measure_names <- "Value"
   }
 
   # if no new measure names specified, uses existing measure names
-  if (length(measure_names) < 2 & missing(measure_names))
+  if (length(measure_names) < 2 & is.na(measure_names))
     measure_names <- old_measure_names
 
   # used to determine df shape
@@ -148,7 +148,7 @@ wrangle_infoshare <- function(df,
   # easiest case with a single measure - names columns and moves dates to their own column
   if (n_meas == 1) {
 
-    if(!missing(measures_in_row)) {
+    if(!is.na(measures_in_row)) {
       df <- df[, -(n_dim + 1)]
     }
 

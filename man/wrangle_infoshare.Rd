@@ -7,12 +7,12 @@
 wrangle_infoshare(
   df,
   dimension_names,
-  measure_names,
-  old_measure_names,
+  measure_names = NA,
+  old_measure_names = NA,
   coerce_to_numeric = TRUE,
   handle_dates = FALSE,
   long = TRUE,
-  measures_in_row
+  measures_in_row = NA
 )
 }
 \arguments{
