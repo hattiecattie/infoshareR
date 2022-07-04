@@ -1,11 +1,18 @@
 Package: infoshareR
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Infoshare Data Wrangling Helpers
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Author: Hattie Plant
+Maintainer: Hattie Plant <harrietplant@gmail.com>
+Description: A few functions for dealing with common tasks when dealing with CSV files downloaded from Stats NZ's Infoshare: removing footnotes, reformatting dates, and converting into a tidy or long data format.
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 7.2.0
+Imports: dplyr,
+         magrittr,
+         tibble,
+         tidyr,
+         rlang
+Depends: 
+    R (>= 2.10)
