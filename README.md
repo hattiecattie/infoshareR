@@ -1,4 +1,5 @@
 # infoshareR
+## Under development
 
 A handful of functions to quickly reshape data from Stats NZ's Infoshare.
 
