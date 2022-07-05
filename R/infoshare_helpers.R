@@ -85,7 +85,7 @@ remove_infoshare_footnotes <- function(df) {
 #' head(regional_gdp_by_industry)
 #' wrangle_infoshare(
 #'                   regional_gdp_by_industry,
-#'                   dimension_names = c("Industry", "Region"),
+#'                   dimension_names = c("Region", "Industry"),
 #'                   measure_names = "GDP",
 #'                   measures_in_row = 1,
 #'                   long = FALSE
